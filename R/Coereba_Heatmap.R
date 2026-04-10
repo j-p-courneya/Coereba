@@ -122,11 +122,19 @@ Coereba_Heatmap <- function(data, RemoveMarkers=NULL, MarkerOrder=NULL,
       sub_values(values= c(0.11, 0.2), replacement = "-/+")|>
       sub_values(values= c(0.3, 0.4), replacement = "+") |>
       sub_values(values= c(0.5, 0.6, 0.7), replacement = "++")
-  }
 
-  Bolded <- Substituted |>
-    opt_table_font(font = "Montserrat") |>
-    cols_align(align = "center")
+    Bolded <- Substituted |>
+      opt_table_font(font = "Montserrat") |>
+      cols_align(align = "center")
+  } else if (ColorFill == TRUE){
+    Bolded <- Filled |>
+      opt_table_font(font = "Montserrat") |>
+      cols_align(align = "center")
+  } else {
+    Bolded <- TheDataTable |>
+      opt_table_font(font = "Montserrat") |>
+      cols_align(align = "center")
+  }
 
   return(Bolded)
 }

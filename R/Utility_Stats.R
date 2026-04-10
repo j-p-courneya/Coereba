@@ -101,7 +101,7 @@ Utility_Stats <- function(data, var, myfactor, normality=NULL, specifiedNormalit
     } else(at)
   } else if (Distribution == "nonparametric" & FactorLevelsCount == 2){
     wt <- tidy(wilcox.test(data[[var]] ~ data[[myfactor]],
-                           alternative = "two.sided", var.equal = TRUE))
+                           alternative = "two.sided"))
   } else if (Distribution == "nonparametric" & FactorLevelsCount > 2){
     kt <- tidy(kruskal.test(data[[var]] ~ data[[myfactor]], data = data))
     if (kt$p.value < override) {

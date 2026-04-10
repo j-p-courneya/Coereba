@@ -126,7 +126,7 @@ MarkerExpressionSummary <- function(x, stats="median", TheName){
       relocate(Population, .before=1)
   } else if (stats == "mean"){
     ReturnValues <- data |>
-      summarise(across(everything(), median, na.rm = TRUE)) |>
+      summarise(across(everything(), mean, na.rm = TRUE)) |>
       round(digits=2) |> mutate(Population=TheName[[1]]) |>
       relocate(Population, .before=1)
   } else {stop("Select for stats argument either mean or median")}
