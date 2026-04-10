@@ -22,7 +22,7 @@ Coereba_Comparison <- function(gs, gs2=NULL, Arg1, Arg2, panel, returnType){
   Arg1Pop <- Arg1Pop[[1, returnType = "flowFrame"]]
   CoerebaOne <- Coereba:::Coereba_FCS_Reversal(Coereba=Arg1Pop)
   CoerebaOneSE <- Coereba_Processing(x=CoerebaOne, panel=panel)
-  CoerebaOneData <- Coereba_MarkerExpressions2(x=CoerebaOneSE)
+  CoerebaOneData <- Coereba_MarkerExpressions(x=CoerebaOneSE)
   CoerebaOneData <- CoerebaOneData |> mutate(Comparison=Arg1) |>
     relocate(Comparison, .before=1)
 
@@ -32,7 +32,7 @@ Coereba_Comparison <- function(gs, gs2=NULL, Arg1, Arg2, panel, returnType){
   Arg2Pop <- Arg2Pop[[1, returnType = "flowFrame"]]
   CoerebaTwo <- Coereba:::Coereba_FCS_Reversal(Coereba=Arg2Pop)
   CoerebaTwoSE <- Coereba_Processing(x=CoerebaTwo, panel=panel)
-  CoerebaTwoData <- Coereba_MarkerExpressions2(x=CoerebaTwoSE)
+  CoerebaTwoData <- Coereba_MarkerExpressions(x=CoerebaTwoSE)
   CoerebaTwoData <- CoerebaTwoData |> mutate(Comparison=Arg2) |>
     relocate(Comparison, .before=1)
 

@@ -71,8 +71,6 @@ Utility_Coereba <- function(gs, subsets, sample.name, subsample = NULL, columns=
   if (length(Data) > 1){Data1 <- bind_rows(Data)
     } else {Data1 <- Data}
   
-  data.frame(table(Data1$Cluster)) |> arrange(desc(Freq)) |> slice_head(n=3)
-  
   if (returnType == "data" && Individual == FALSE){return(Data1)}
 
   if (returnType == "flowframe" && Individual == FALSE){
@@ -83,16 +81,6 @@ Utility_Coereba <- function(gs, subsets, sample.name, subsample = NULL, columns=
       nameAppend=nameAppend, Aggregate=TRUE)
     return(FlowFrame)
   
-  if (returnType == "fcs" && Individual == FALSE){
-      message("Returning aggregated fcs file")
-    
-    FCSFile <- Coereba_FCSExport(data=Data1, gs=gs[1],
-      returnType=returnType, outpath=outpath, filename=filename,
-      nameAppend=nameAppend, Aggregate=TRUE)
-    
-    message("FCS file exported")
-  }
-
 }
 
 

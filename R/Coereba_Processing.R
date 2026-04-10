@@ -65,7 +65,7 @@ Coereba_Processing <- function(x, themetadata=NULL, metadata_columns=NULL,
     pivot_wider(names_from = all_of(SpecimenVariable), values_from = "Ratio")
   Ratio[is.na(Ratio)] <- 0
   Ratio1 <- Ratio |> select(-all_of(ClusterVariable))
-  ClusterNameOrder <- Ratio |> pull(Cluster)
+  ClusterNameOrder <- Ratio |> pull(.data[[ClusterVariable]])
 
   # Returning a metadata template when none is provided
   Names <- colnames(Counts)
